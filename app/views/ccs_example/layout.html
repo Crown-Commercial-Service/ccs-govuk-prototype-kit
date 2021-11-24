@@ -1,0 +1,275 @@
+{#- We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework. -#}
+{%- set assetPath = '/govuk/assets' -%}
+
+{% extends "govuk/template.njk" %}
+
+{% from "govuk/components/accordion/macro.njk"           import govukAccordion %}
+{% from "govuk/components/back-link/macro.njk"           import govukBackLink %}
+{% from "govuk/components/breadcrumbs/macro.njk"         import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk"              import govukButton %}
+{% from "govuk/components/character-count/macro.njk"     import govukCharacterCount %}
+{% from "govuk/components/checkboxes/macro.njk"          import govukCheckboxes %}
+{% from "govuk/components/cookie-banner/macro.njk"       import govukCookieBanner %}
+{% from "govuk/components/date-input/macro.njk"          import govukDateInput %}
+{% from "govuk/components/details/macro.njk"             import govukDetails %}
+{% from "govuk/components/error-message/macro.njk"       import govukErrorMessage %}
+{% from "govuk/components/error-summary/macro.njk"       import govukErrorSummary %}
+{% from "govuk/components/fieldset/macro.njk"            import govukFieldset %}
+{% from "govuk/components/file-upload/macro.njk"         import govukFileUpload %}
+{% from "govuk/components/input/macro.njk"               import govukInput %}
+{% from "govuk/components/inset-text/macro.njk"          import govukInsetText %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/panel/macro.njk"               import govukPanel %}
+{% from "govuk/components/phase-banner/macro.njk"        import govukPhaseBanner %}
+{% from "govuk/components/radios/macro.njk"              import govukRadios %}
+{% from "govuk/components/select/macro.njk"              import govukSelect %}
+{% from "govuk/components/skip-link/macro.njk"           import govukSkipLink %}
+{% from "govuk/components/summary-list/macro.njk"        import govukSummaryList %}
+{% from "govuk/components/table/macro.njk"               import govukTable %}
+{% from "govuk/components/tabs/macro.njk"                import govukTabs %}
+{% from "govuk/components/tag/macro.njk"                 import govukTag %}
+{% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
+{% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
+
+{% from "ccs_example/components/header/macro.njk"                import ccsHeader %}
+{% from "ccs_example/components/footer/macro.njk"                import ccsFooter %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock %}
+
+{% block pageTitle %}
+  CCS Prototype Kit
+{% endblock %}
+
+{% block header %}
+  {# Set serviceName in config.js. #}
+  {{ ccsHeader({
+    navigationPrimary: [
+      {
+        href: "https://www.crowncommercial.gov.uk/agreements",
+        text: "Search agreements"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/suppliers",
+        text: "Search suppliers"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/agreements/upcoming",
+        text: "Upcoming deals"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/products-and-services",
+        text: "Products and Services"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/sectors",
+        text: "Sectors"
+      }
+    ],
+    navigationSecondary: [
+      {
+        href: "https://www.crowncommercial.gov.uk/buy-and-supply/carbon-net-zero",
+        text: "Carbon Net Zero"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/about-ccs",
+        text: "About"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/contact",
+        text: "Contact"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/events",
+        text: "Events"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/news",
+        text: "News"
+      },
+      {
+        href: "https://www.crowncommercial.gov.uk/buy-and-supply",
+        text: "Buy and supply"
+      },
+      {
+        href: "tel:0345%20410%202222",
+        text: "call us: 0345 410 2222"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+
+{% if useAutoStoreData %}
+  {% block footer %}
+    {{ ccsFooter({
+      sections: [
+        {
+          title: 'Sitemap',
+          items: [
+            {
+              href: "https://www.crowncommercial.gov.uk/agreements",
+              text: "Search agreements"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/suppliers",
+              text: "Search suppliers"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/agreements/upcoming",
+              text: "Upcoming deals"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/buy-and-supply/how-to-buy/",
+              text: "Buy through CCS"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/buy-and-supply/",
+              text: "Buy and supply"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/about-ccs/",
+              text: "About CCS"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/contact",
+              text: "Contact us"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/news",
+              text: "News"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/about-ccs/press-office/",
+              text: "Press Office"
+            }
+          ]
+        },
+        {
+          title: 'Quick links',
+          items: [
+            {
+              href: "https://purchasingplatform.crowncommercial.gov.uk/mp-welcome",
+              text: "Purchasing platform"
+            },
+            {
+              href: "https://www.digitalmarketplace.service.gov.uk/",
+              text: "Digital marketplace"
+            },
+            {
+              href: "https://buyers.procserveonline.com/admin/login/auth?marketplace=bootstrap-gem",
+              text: "eMarketplace login"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/emarketplace-registration-form/",
+              text: "eMarketplace registration"
+            },
+            {
+              href: "https://fleetportal.crowncommercial.gov.uk/login.mth",
+              text: "Fleet"
+            },
+            {
+              href: "https://travel.crowncommercial.gov.uk/",
+              text: "Travel"
+            },
+            {
+              href: "https://www.gov.uk/contracts-finder",
+              text: "Contracts Finder"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/esourcing-register",
+              text: "eSourcing"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/esourcing-training",
+              text: "Register for eSourcing training"
+            },
+            {
+              href: "https://www.find-tender.service.gov.uk/",
+              text: "Find a Tender"
+            },
+            {
+              href: "http://ted.europa.eu/TED/main/HomePage.do",
+              text: "Tenders Electronic Daily (TED)"
+            },
+            {
+              href: "https://www.reportmi.crowncommercial.gov.uk/",
+              text: "Submit your MI returns"
+            },
+            {
+              href: "https://status.crowncommercial.gov.uk/",
+              text: "Service Status"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/newsletter",
+              text: "Sign up to our buyer newsletter"
+            }
+          ]
+        },
+        {
+          title: 'About and contact',
+          items: [
+            {
+              href: "https://www.crowncommercial.gov.uk/about-ccs/",
+              text: "About CCS"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/contact",
+              text: "Contact CCS"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/make-a-complaint/",
+              text: "Make a complaint"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/careers-with-ccs/",
+              text: "Careers with CCS"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/terms-and-conditions/",
+              text: "Terms and conditions"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/cookie-policy/",
+              text: "Cookie policy"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/cookie-settings/",
+              text: "Cookie settings"
+            },
+            {
+              href: "https://www.gov.uk/government/organisations/crown-commercial-service",
+              text: "Corporate information"
+            },
+            {
+              href: "https://www.gov.uk/government/publications/crown-commercial-service-privacy-notice",
+              text: "Privacy notice"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/accessibility-statement",
+              text: "Accessibility"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/public-sector-equality-duty-psed/",
+              text: "Public Sector Equality Duty (PSED)"
+            },
+            {
+              href: "https://www.crowncommercial.gov.uk/about-ccs/vulnerability-disclosure-policy/",
+              text: "Vulnerability disclosure policy"
+            }
+          ]
+        }
+      ]
+    })}}
+  {% endblock %}
+{% endif %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+  <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
+{% endblock %}

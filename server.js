@@ -241,6 +241,10 @@ if (typeof (routes) !== 'function') {
   app.use('/', routes)
 }
 
+const ccsExampleRoutes = require('./app/ccs_example_routes.js')
+app.use('/ccs', ccsExampleRoutes)
+
+
 if (useDocumentation) {
   // Clone app locals to documentation app locals
   // Use Object.assign to ensure app.locals is cloned to prevent additions from

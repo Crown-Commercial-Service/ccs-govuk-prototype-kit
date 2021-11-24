@@ -1,0 +1,13 @@
+<div class="govuk-grid-column-one-quarter">
+  <h2 class="govuk-heading-m govuk-!-font-size-24">{{ params.title }}</h2>
+  {% if params.html %}
+    {{ params.html | safe }}
+  {% else %}
+    <p class="govuk-body govuk-!-font-size-17featured"> {{ params.text }}</p>
+    <p class="govuk-body govuk-!-font-size-17featured">
+      <a href="{{ params.href }}">
+        Learn more <span class="visuallyhidden">about {{ params.title }}</span>
+      </a>
+    </p>
+  {% endif %}
+</div>
