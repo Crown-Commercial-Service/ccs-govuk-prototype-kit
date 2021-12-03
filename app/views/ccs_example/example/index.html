@@ -1,0 +1,111 @@
+
+{% from "ccs_example/components/homePagePanel/macro.njk"  import ccsHomePagePanel %}
+{% from "ccs_example/components/latestNews/macro.njk"     import ccsLatestNews %}
+
+{% extends "ccs_example/layout.html" %}
+
+{% block content %}
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      {{ govukWarningText({
+        html: '
+          This is an example page based off of the <a class="govuk-link" href="https://www.crowncommercial.gov.uk/" target="_blank">CCS home page (opens in new tab)</a>.
+        ',
+        iconFallbackText: "Warning"
+      }) }}
+    </div>
+  </div>
+  <div class="apollo-island">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+
+        {{ ccsHomePagePanel({
+          title: 'How to buy',
+          text: 'CCS has a wide range of commercial agreements you can access in several ways: agreements, catalogues, portals and aggregation. Learn about the buying routes and what you can buy from each.',
+          href: '/buy-and-supply/how-to-buy/'
+        }) }}
+
+        {{ ccsHomePagePanel({
+          title: 'Agreements',
+          text: 'Agreements are for common but complex requirements. They comprise a list of suppliers and standardised contract terms. Agreements are often divided into lots by product or service type.',
+          href: '/buy-and-supply/agreements/'
+        }) }}
+
+        {{ ccsHomePagePanel({
+          title: 'Upcoming Deals',
+          text: 'CCS plans to launch new commercial agreements and renew some existing ones. Learn which agreements are still open to suppliers to tender, and when they will be ready to buy from.',
+          href: '/agreements/upcoming'
+        }) }}
+
+        {{ ccsHomePagePanel({
+          title: 'Catalogues',
+          html: '
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              <a href="/buy-and-supply/purchasing-platform/"> Purchasing platform </a>
+            </p>
+            <p class="govuk-body govuk-!-font-size-16"> Technology products, office supplies, multifunctional devices </p>
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              <a href="/buy-and-supply/digital-marketplace/"> Digital marketplace </a>
+            </p>
+            <p class="govuk-body govuk-!-font-size-16"> Cloud hosting, digital specialists, data centre space, user research </p>
+            <p class="govuk-body govuk-!-margin-bottom-0">
+              <a href="/buy-and-supply/emarketplace/"> eMarketplace </a>
+            </p>
+            <p class="govuk-body govuk-!-font-size-16"> Local authority software, wider public sector office supplies </p>
+          '
+        }) }}
+      </div>
+    </div>
+  </div>
+  <div class="apollo-island apollo-island--emphasised">
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          {{ ccsLatestNews({
+            items: [
+              {
+                title: 'Blog',
+                text: 'Tyres, Glass and Fast Fit Solutions – flexible fleet maintenance',
+                href: '/news/tyres-glass-and-fast-fit-solutions-flexible-fleet-maintenance',
+                images: {
+                  small: 'https://assets.crowncommercial.gov.uk/wp-content/uploads/Tyres-Glass-and-Fast-Fit-Solutions-%E2%80%93-flexible-fleet-maintenance-solutions-by-CCS-1-320x213.jpg',
+                  large: 'https://assets.crowncommercial.gov.uk/wp-content/uploads/Tyres-Glass-and-Fast-Fit-Solutions-%E2%80%93-flexible-fleet-maintenance-solutions-by-CCS-1-640x427.jpg'
+                },
+                date: '29th October 2021'
+              },
+              {
+                title: 'News',
+                text: 'DfE approves Print Marketplace framework',
+                href: '/news/dfe-approves-print-marketplace-framework',
+                images: {
+                  small: 'https://assets.crowncommercial.gov.uk/wp-content/uploads/shutterstock_268007354-320x213.jpg',
+                  large: 'https://assets.crowncommercial.gov.uk/wp-content/uploads/shutterstock_268007354-640x427.jpg'
+                },
+                date: '28th October 2021'
+              },
+              {
+                title: 'Blog',
+                text: 'Helping you solve the public sector debt challenge',
+                href: '/news/helping-you-solve-the-public-sector-debt-challenge',
+                images: {
+                  small: 'https://assets.crowncommercial.gov.uk/wp-content/uploads/shutterstock_1066416791-2-320x213.jpg',
+                  large: 'https://assets.crowncommercial.gov.uk/wp-content/uploads/shutterstock_1066416791-2-640x427.jpg'
+                },
+                date: '28th October 2021'
+              }
+            ]
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <h2 class="govuk-heading-m">Learn about CCS</h2>
+          <p class="responsive-video widescreen">
+            <iframe title="An overview of CCS in 30 seconds" width="560" height="315" src="https://www.youtube-nocookie.com/embed/_p61ZX4zQHU?enablejsapi=1&amp;origin=https%3A%2F%2Fwww.crowncommercial.gov.uk" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-gtm-yt-inspected-11252684_27="true" id="100412543"></iframe>
+          </p>
+          <p>
+            <a href=" /buy-and-supply/"> Browse all help and support guides </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
