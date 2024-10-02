@@ -15,7 +15,7 @@
     "acorn": "^8.5.0",
     "ansi-colors": "^4.1.1",
     "basic-auth": "^2.0.0",
-    "basic-auth-connect": "^1.0.0",
+    "basic-auth-connect": "^1.1.0",
     "body-parser": "^1.14.1",
     "browser-sync": "^2.11.1",
     "ccs-frontend-kit": "^1.1.3",
